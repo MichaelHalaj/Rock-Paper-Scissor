@@ -1,5 +1,5 @@
 function getComputerChoice(){
-    let choice = Math.random() * 3;
+    let choice = Math.floor(Math.random() * 3);
     switch(choice){
         case 0:
             return 'rock';
@@ -12,6 +12,9 @@ function getComputerChoice(){
 
 function playRound(playerSelection, computerSelection){
     playerSelection = playerSelection.toLowerCase();
+    if(playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissor'){
+        return 'Invalid input'
+    }
     if(playerSelection === 'rock' && computerSelection === 'paper'){
         return 'You lose! Paper beats Rock';
     }else if(playerSelection === 'paper' && computerSelection === 'scissor'){
@@ -21,9 +24,11 @@ function playRound(playerSelection, computerSelection){
     }else if(playerSelection === 'rock' && computerSelection === 'scissor'){
         return 'You win! Rock beats Scissor'
     }else if(playerSelection === 'scissor' && computerSelection === 'paper'){
-        return 'You win! Scissor beats paper';
-    }else{
+        return 'You win! Scissor beats Paper';
+    }else if (playerSelection === 'paper' && computerSelection === 'rock'){
         return 'You win! Paper beats rock';
+    }else{
+        return `Draw! You both picked ${playerSelection}`;
     }
 
 }
