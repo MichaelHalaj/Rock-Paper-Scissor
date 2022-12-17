@@ -30,9 +30,10 @@ function playRound(e){
     }else if(playerSelection === 'scissor' && computerSelection === 'paper'){
         return 'You win! Scissor beats Paper';
     }else if (playerSelection === 'paper' && computerSelection === 'rock'){
-        return 'You win! Paper beats rock';
+        return 'You win! Paper beats Rock';
     }else{
-        return `Draw! You both picked ${playerSelection}`;
+        firstLetterCap = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+        return `Draw! You both picked ${firstLetterCap}`;
     }
 
 }
