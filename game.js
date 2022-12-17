@@ -10,8 +10,12 @@ function getComputerChoice(){
     }
 }
 
-function playRound(playerSelection, computerSelection){
+function playRound(e){
+    //playerSelection = document.querySelector(e.)
+   // console.log(e.target.className);
+    playerSelection = e.target.className;
     playerSelection = playerSelection.toLowerCase();
+    computerSelection = getComputerChoice();
     if(playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissor'){
         return 'Invalid input'
     }
@@ -34,11 +38,20 @@ function playRound(playerSelection, computerSelection){
 }
 
 function game(){
-    const btns = document.querySelectorAll('btn');
+    const buttons = document.querySelectorAll('button');
+    const body = document.querySelector('body');
+    buttons.forEach(btn => btn.addEventListener('click', function(e) {
+        const result = document.createElement('div');
+        result.classList.add('result');
+        result.textContent = playRound(e);
+        body.appendChild(result);
+    }));
     
-        playerSelection = prompt("Pick rock, paper, or scissor");
-        computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
+    //const rock = document.querySelector('.rock');
+    
+        //playerSelection = prompt("Pick rock, paper, or scissor");
+        
+        //console.log(playRound(playerSelection, computerSelection));
 
 }
 
