@@ -13,35 +13,28 @@ function getComputerChoice(){
 }
 
 function playRound(e){
-    //playerSelection = document.querySelector(e.)
-   // console.log(e.target.className);
     playerSelection = e.target.className;
     playerSelection = playerSelection.toLowerCase();
     computerSelection = getComputerChoice();
+
+    firstLetterCapPlayer = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+    firstLetterCapComputer = computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1);
+
     if(playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissor'){
         return 'Invalid input';
     }
-    if(playerSelection === 'rock' && computerSelection === 'paper'){
+    if(playerSelection === 'rock' && computerSelection === 'paper'
+        || playerSelection === 'paper' && computerSelection === 'scissor'
+        || playerSelection === 'scissor' && computerSelection === 'rock'){
         computerScore++;
-        return 'You lose! Paper beats Rock';
-    }else if(playerSelection === 'paper' && computerSelection === 'scissor'){
-        computerScore++;
-        return 'You lose! Scissor beats Paper';
-    }else if(playerSelection === 'scissor' && computerSelection === 'rock'){
-        computerScore++;
-        return 'You lose! Rock beats Scissor';
-    }else if(playerSelection === 'rock' && computerSelection === 'scissor'){
+        return `You lose! ${firstLetterCapComputer} beats ${firstLetterCapPlayer}`;
+    }else if(playerSelection === 'rock' && computerSelection === 'scissor'
+        || playerSelection === 'scissor' && computerSelection === 'paper'
+        || playerSelection === 'paper' && computerSelection === 'rock'){
         playerScore++;
-        return 'You win! Rock beats Scissor'
-    }else if(playerSelection === 'scissor' && computerSelection === 'paper'){
-        playerScore++;
-        return 'You win! Scissor beats Paper';
-    }else if (playerSelection === 'paper' && computerSelection === 'rock'){
-        playerScore++;
-        return 'You win! Paper beats Rock';
+        return `You win! ${firstLetterCapPlayer} beats ${firstLetterCapComputer}`;
     }else{
-        firstLetterCap = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
-        return `Draw! You both picked ${firstLetterCap}`;
+        return `Draw! You both picked ${firstLetterCapPlayer}`;
     }
 }
 
