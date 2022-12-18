@@ -1,5 +1,5 @@
 let playerScore = 0, computerScore = 0;
-
+const buttons = document.querySelectorAll('.buttons')
 function getComputerChoice(){
     let choice = Math.floor(Math.random() * 3);
     switch(choice){
@@ -12,8 +12,9 @@ function getComputerChoice(){
     }
 }
 
-function playRound(e){
-    playerSelection = e.target.className;
+function playRound(playerSelection){
+
+    
     playerSelection = playerSelection.toLowerCase();
     computerSelection = getComputerChoice();
 
@@ -38,11 +39,16 @@ function playRound(e){
     }
 }
 
+
+
+
 function game(){
+
     const buttons = document.querySelectorAll('button');
     const body = document.querySelector('body');
     const playerElementScore = document.querySelector('.player-score');
     const computerElementScore = document.querySelector('.computer-score');
+
 
     buttons.forEach(btn => btn.addEventListener('click', function(e) {
         const result = document.createElement('div');
@@ -52,11 +58,27 @@ function game(){
 
         playerElementScore.textContent = playerScore;
         computerElementScore.textContent = computerScore;
+        if(playerScore == 5){
+            return;
+        }
+        if(computerScore == 5){
+            return;
+        }
         body.appendChild(result);
 
     }));
 }
 
+buttons.forEach(btn => btn.addEventListener('click', function(e){
+    playRound(e.target.className);
+    console.log(e.target.className);
+}));
+/*
+buttons.forEach(btn => {
+    btn.addEventListener('click', function(e){
+    //playRound(btn.target.className);
+        console.log(e);
+    });
+});
+*/
 
-
-game();
