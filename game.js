@@ -41,11 +41,17 @@ function playRound(e){
 function game(){
     const buttons = document.querySelectorAll('button');
     const body = document.querySelector('body');
+    const playerElementScore = document.querySelector('.player-score');
+    const computerElementScore = document.querySelector('.computer-score');
 
     buttons.forEach(btn => btn.addEventListener('click', function(e) {
         const result = document.createElement('div');
+
         result.classList.add('result');
         result.textContent = playRound(e);
+
+        playerElementScore.textContent = playerScore;
+        computerElementScore.textContent = computerScore;
         body.appendChild(result);
 
     }));
