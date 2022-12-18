@@ -47,13 +47,6 @@ function game(){
         result.textContent = playRound(e);
         body.appendChild(result);
     }));
-    
-    //const rock = document.querySelector('.rock');
-    
-        //playerSelection = prompt("Pick rock, paper, or scissor");
-        
-        //console.log(playRound(playerSelection, computerSelection));
-
 }
 
 
