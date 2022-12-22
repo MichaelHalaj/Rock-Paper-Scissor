@@ -21,6 +21,7 @@ function playRound(playerSelection){
     firstLetterCapPlayer = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
     firstLetterCapComputer = computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1);
 
+    const buttons = document.querySelectorAll('button');
     if(playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissor'){
         return 'Invalid input';
     }
@@ -38,9 +39,6 @@ function playRound(playerSelection){
         return `Draw! You both picked ${firstLetterCapPlayer}`;
     }
 }
-
-
-
 
 function game(){
 
@@ -70,8 +68,11 @@ function game(){
 }
 
 buttons.forEach(btn => btn.addEventListener('click', function(e){
-    playRound(e.target.className);
+    message = playRound(e.target.className);
+    const result = document.querySelectorAll('results')
     console.log(e.target.className);
+    console.log('Player score: ' + playerScore);
+    console.log('Computer Score: ' + computerScore);
 }));
 /*
 buttons.forEach(btn => {
