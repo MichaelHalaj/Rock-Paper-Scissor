@@ -5,16 +5,22 @@ function computerChoice(){
     return choices[Math.floor(Math.random()*choices.length)];
 }
 
-function playRound(playerChoice){
+function playRound(playerDecision){
     computerDecision = computerChoice();
 
+    formattedComputerDecision = computerDecision.charAt(0).toUpperCase() + computerDecision.substring(0);
+    console.log(formattedComputerDecision);
+    if(computerDecision == 'rock' && playerDecision == 'paper'
+    || computerDecision == 'paper' && playerDecision == 'rock'
+    || computerDecision == 'scissors' && playerDecision == 'paper'){
+        message = `You lose! ${computerDecision}`;
+    }
 }
 
-const buttons = document.querySelectorAll('buttons');
+const buttons = document.querySelectorAll('button');
 
 buttons.forEach(btn =>{
-    console.log(btn);
     btn.addEventListener('click', function(){
-        console.log(btn);
+        playRound(btn.className);
     });
 });
